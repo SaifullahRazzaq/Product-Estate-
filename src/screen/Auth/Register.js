@@ -497,80 +497,6 @@ export default function SignUp() {
             </TouchableOpacity>
           </View> */}
 
-          <Button
-            isSocialBtn={true}
-            buttonText="Continue with Google"
-            buttonColor={Colors.white}
-            titleColor={Colors.black}
-            textStyle={{
-              paddingHorizontal: Metrix.HorizontalSize(6),
-              color: Colors.secondaryColor,
-            }}
-            btnStyle={{
-              borderWidth: 1,
-              borderColor: Colors.gray,
-              backgroundColor: 'transparent',
-              marginVertical:Metrix.VerticalSize(5),
-            }}
-            buttonIcon={
-              <Image
-                resizeMode="contain"
-                source={Images.google}
-                style={styles.socialIcon}
-              />
-            }
-          />
-
-          <Button
-            isSocialBtn={true}
-            buttonText="Continue with Facebook"
-            buttonColor={Colors.white}
-            titleColor={Colors.black}
-            textStyle={{
-              paddingHorizontal: Metrix.HorizontalSize(6),
-              color: Colors.secondaryColor,
-            }}
-            btnStyle={{
-              borderWidth: 1,
-              borderColor: Colors.gray,
-              backgroundColor: 'transparent',
-              marginVertical:Metrix.VerticalSize(5),
-            }}
-            buttonIcon={
-              <Image
-                resizeMode="contain"
-                source={Images.facebook}
-                style={styles.socialIcon}
-              />
-            }
-          />
-
-          {Platform.OS == 'ios' && (
-            <Button
-              isSocialBtn={true}
-              buttonText="Continue with Apple"
-              buttonColor={Colors.white}
-              titleColor={Colors.black}
-              textStyle={{
-                paddingHorizontal: Metrix.HorizontalSize(6),
-                color: Colors.secondaryColor,
-              }}
-              btnStyle={{
-                borderWidth: 1,
-                borderColor: Colors.gray,
-                backgroundColor: 'transparent',
-                marginVertical:Metrix.VerticalSize(5)
-              }}
-              buttonStyle={{borderWidth: 1, borderColor: Colors.gray}}
-              buttonIcon={
-                <Image
-                  resizeMode="contain"
-                  source={Images.apple}
-                  style={styles.socialIcon}
-                />
-              }
-            />
-          )}
           <View style={styles.linkContainer}>
             <Text
               style={{
@@ -583,9 +509,9 @@ export default function SignUp() {
             <TouchableOpacity
               activeOpacity={0.7}
               onPress={() => {
-                NavigationService.goBack();
+                NavigationService.navigate('Login');
               }}>
-              <Text style={{color: Colors.secondaryColor}}> Login</Text>
+              <Text style={styles.login}> Login</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -674,5 +600,10 @@ const styles = StyleSheet.create({
     zIndex: 100,
     top: Metrix.VerticalSize(36),
     right: Metrix.HorizontalSize(15),
+  },
+  login: {
+    color: Colors.secondaryColor,
+    fontFamily: fonts.Black,
+    fontSize: Metrix.customFontSize(12),
   },
 });

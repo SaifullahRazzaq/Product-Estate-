@@ -1,6 +1,7 @@
 import Login from './Auth/Login';
 import SignUp from './Auth/Register';
-// import ForgotPassword from './Auth/ForgotPassword';
+import ForgotPassword from './Auth/ForgotPasssword';
+import IntroScreen from './Auth/IntroScreen'
 // import ChangePassword from './Auth/ChangePassword';
 // import PrivacyPolicy from './Auth/PrivacyPolicy';
 // import TermsAndCondition from './Auth/TermsAndConditions';
@@ -22,6 +23,8 @@ import SignUp from './Auth/Register';
 export {
     Login,
     SignUp,
+    ForgotPassword,
+    IntroScreen
     // ForgotPassword,
     // ChangePassword,
     // PrivacyPolicy,

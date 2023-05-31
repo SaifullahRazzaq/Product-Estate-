@@ -2,8 +2,8 @@ import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {Colors, Metrix, NavigationService} from './src/config';
-import {Login, SignUp} from './src/screen';
-import {BottomTabs,Button} from './src/components';
+import {ForgotPassword, IntroScreen, Login, SignUp} from './src/screen';
+import {BottomTabs, Button} from './src/components';
 import {ActivityIndicator, View} from 'react-native';
 import {connect} from 'react-redux';
 const Stack = createStackNavigator();
@@ -13,11 +13,13 @@ const AuthStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
-      initialRouteName="SignUp">
+      initialRouteName="Intro">
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="Login" component={Login} />
-      {/* <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+      <Stack.Screen name="Intro" component={IntroScreen} />
+
+      {/* <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="ChangePassword" component={ChangePassword} />
       <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
       <Stack.Screen name="Verification" component={Verification} /> */}

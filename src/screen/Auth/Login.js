@@ -129,15 +129,13 @@ export default function Login() {
           </View>
 
           <View style={styles.linkContainer}>
-            <Text style={{fontFamily: fonts.Regular, textAlign: 'center'}}>
-              Don't have an account yet?
-            </Text>
+            <Text style={gStyles.text}>Don't have an account yet?</Text>
             <TouchableOpacity
               activeOpacity={0.7}
               onPress={() => {
                 NavigationService.navigate('SignUp');
               }}>
-              <Text style={{color: Colors.primary}}> Register</Text>
+              <Text style={styles.register}> Register</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -164,7 +162,7 @@ const styles = StyleSheet.create({
     fontSize: Metrix.customFontSize(13),
     marginVertical: Metrix.VerticalSize(10),
     lineHeight: Metrix.VerticalSize(24),
-    fontFamily: fonts.Regular,
+    fontFamily: fonts.Medium,
     color: Colors.secondaryColor,
   },
   eyeIconStyle: {
@@ -208,5 +206,10 @@ const styles = StyleSheet.create({
     marginTop: Metrix.VerticalSize(40),
     marginBottom: Metrix.VerticalSize(10),
     justifyContent: 'center',
+  },
+  register: {
+    color: Colors.secondaryColor,
+    fontFamily: fonts.Black,
+    fontSize: Metrix.customFontSize(12),
   },
 });
