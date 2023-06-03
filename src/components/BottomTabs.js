@@ -1,19 +1,19 @@
-import React, {useState} from 'react';
-import {StyleSheet, View, TouchableOpacity, Text} from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-// import {Home, Booking, Messages, More} from './../screens';
-import {Colors, Metrix} from '../config';
-import {useSelector} from 'react-redux';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Colors, Metrix } from '../config';
+import { useSelector } from 'react-redux';
+import { Chat, Home, More, Map } from '../screen';
 
 const BottomTabs = () => {
   const Tab = createBottomTabNavigator();
-  let icons = ['home', 'booking', 'messages', 'more'];
-  const bookingCount = useSelector(state => state.AuthReducer?.bookingCount);
-  const messageCount = useSelector(state => state.AuthReducer?.messageCount);
-  console.log('bookingCount', bookingCount);
+  let icons = ['Home', 'Map', 'Chat', 'more'];
+  // const bookingCount = useSelector(state => state.AuthReducer?.bookingCount);
+  // const messageCount = useSelector(state => state.AuthReducer?.messageCount);
+  // console.log('bookingCount', bookingCount);
   return (
     <>
       <Tab.Navigator
@@ -66,22 +66,22 @@ const BottomTabs = () => {
                     />
                   ) : icons[index] === 'booking' ? (
                     <View>
-                      {bookingCount ? (
-                        <View
-                          style={{
-                            position: 'absolute',
-                            top: Metrix.VerticalSize(-5),
-                            right: Metrix.HorizontalSize(-20),
-                            zIndex: 2,
-                            borderRadius: 12,
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            backgroundColor: Colors.red,
-                            height: Metrix.HorizontalSize(10),
-                            width: Metrix.HorizontalSize(10),
-                          }}
-                        />
-                      ) : null}
+                      {/* {bookingCount ? ( */}
+                      <View
+                        style={{
+                          position: 'absolute',
+                          top: Metrix.VerticalSize(-5),
+                          right: Metrix.HorizontalSize(-20),
+                          zIndex: 2,
+                          borderRadius: 12,
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          backgroundColor: Colors.red,
+                          height: Metrix.HorizontalSize(10),
+                          width: Metrix.HorizontalSize(10),
+                        }}
+                      />
+                      {/* ) : null} */}
                       <FontAwesome
                         name={'calendar-o'}
                         size={Metrix.customFontSize(20)}
@@ -94,22 +94,22 @@ const BottomTabs = () => {
                     </View>
                   ) : icons[index] === 'messages' ? (
                     <View>
-                      {messageCount ? (
-                        <View
-                          style={{
-                            position: 'absolute',
-                            top: Metrix.VerticalSize(-5),
-                            right: Metrix.HorizontalSize(-20),
-                            zIndex: 2,
-                            borderRadius: 12,
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            backgroundColor: Colors.red,
-                            height: Metrix.HorizontalSize(10),
-                            width: Metrix.HorizontalSize(10),
-                          }}
-                        />
-                      ) : null}
+                      {/* {messageCount ? ( */}
+                      <View
+                        style={{
+                          position: 'absolute',
+                          top: Metrix.VerticalSize(-5),
+                          right: Metrix.HorizontalSize(-20),
+                          zIndex: 2,
+                          borderRadius: 12,
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          backgroundColor: Colors.red,
+                          height: Metrix.HorizontalSize(10),
+                          width: Metrix.HorizontalSize(10),
+                        }}
+                      />
+                      {/* ) : null} */}
                       <MaterialCommunityIcons
                         name={'message-processing'}
                         size={Metrix.customFontSize(20)}
@@ -152,8 +152,8 @@ const BottomTabs = () => {
             </View>
           );
         }}
-        tabBarOptions={{showLabel: false}}
-        screenOptions={({route}) => ({
+        tabBarOptions={{ showLabel: false }}
+        screenOptions={({ route }) => ({
           tabBarHideOnKeyboard: true,
           headerShown: false,
           activeTintColor: 'blue',
@@ -180,7 +180,7 @@ const BottomTabs = () => {
           component={Home}
           headerShown={false}
           options={{
-            tabBarIcon: ({focused}) => (
+            tabBarIcon: ({ focused }) => (
               <View
                 style={{
                   alignItems: 'center',
@@ -189,7 +189,7 @@ const BottomTabs = () => {
                 <FontAwesome
                   name={'home'}
                   size={25}
-                  color={focused ? '#CCCCFF' : Colors.white}
+                  color={focused ? Colors.secondaryColor : Colors.white}
                 />
               </View>
             ),
@@ -198,30 +198,30 @@ const BottomTabs = () => {
         />
 
         <Tab.Screen
-          name="Bookings"
-          component={Booking}
+          name="Map"
+          component={Map}
           options={{
-            tabBarIcon: ({focused}) => (
-              <View style={{alignItems: 'center', justifyContent: 'center'}}>
+            tabBarIcon: ({ focused }) => (
+              <View style={{ alignItems: 'center', justifyContent: 'center' }}>
                 <FontAwesome
                   name={'search'}
                   size={25}
-                  color={focused ? '#CCCCFF' : Colors.black}
+                  color={focused ? Colors.secondaryColor : Colors.black}
                 />
               </View>
             ),
           }}
         />
         <Tab.Screen
-          name="Messages"
-          component={Messages}
+          name="Chat"
+          component={Chat}
           options={{
-            tabBarIcon: ({focused}) => (
-              <View style={{alignItems: 'center', justifyContent: 'center'}}>
+            tabBarIcon: ({ focused }) => (
+              <View style={{ alignItems: 'center', justifyContent: 'center' }}>
                 <MaterialCommunityIcons
                   name={'weight-lifter'}
                   size={25}
-                  color={focused ? '#CCCCFF' : Colors.black}
+                  color={focused ? Colors.secondaryColor : Colors.black}
                 />
               </View>
             ),
@@ -231,12 +231,12 @@ const BottomTabs = () => {
           name="More"
           component={More}
           options={{
-            tabBarIcon: ({focused}) => (
-              <View style={{alignItems: 'center', justifyContent: 'center'}}>
+            tabBarIcon: ({ focused }) => (
+              <View style={{ alignItems: 'center', justifyContent: 'center' }}>
                 <FontAwesome
                   name={'user'}
                   size={25}
-                  color={focused ? '#CCCCFF' : Colors.black}
+                  color={focused ? Colors.secondaryColor : Colors.black}
                 />
               </View>
             ),

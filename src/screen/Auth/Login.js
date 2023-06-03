@@ -6,12 +6,12 @@ import {
   Image,
   View,
 } from 'react-native';
-import React, {useState} from 'react';
-import {Colors, Images, Metrix, NavigationService} from '../../config';
-import {Button, Input} from '../../components';
-import {fonts} from '../../config/Constants';
+import React, { useState } from 'react';
+import { Colors, Images, Metrix, NavigationService } from '../../config';
+import { Button, Input } from '../../components';
+import { fonts } from '../../config/Constants';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {gStyles} from '../../styles';
+import { gStyles } from '../../styles';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -19,11 +19,11 @@ export default function Login() {
   const [seePassword, setSeePassword] = useState(false);
 
   const loginUser = () => {
-    // NavigationService.resetStack('UserStack', { screen: 'Home' })
+    NavigationService.resetStack('UserStack', { screen: 'BottomTabs' })
   };
   return (
     <View style={gStyles.shadowCard}>
-      <ScrollView style={{paddingHorizontal: Metrix.HorizontalSize(20)}}>
+      <ScrollView style={{ paddingHorizontal: Metrix.HorizontalSize(20) }}>
         <View style={styles.imageContainer}>
           {/* <Image
             source={{uri:'https://www.shutterstock.com/image-vector/user-login-authenticate-icon-human-600w-1365533969.jpg'}}
@@ -33,8 +33,8 @@ export default function Login() {
           <Text>Logo Here</Text>
         </View>
 
-        <View style={{marginVertical: Metrix.VerticalSize(5)}}>
-          <Text style={styles.title}>Sign In</Text>
+        <View style={{ marginVertical: Metrix.VerticalSize(5) }}>
+          <Text style={gStyles.title}>Sign In</Text>
           <Text style={styles.description}>
             Lorem ipsum dolor sit amet consectetur adipiscing elit sed do
             eiusmod tempor incididunt ut lab ore.
@@ -42,7 +42,7 @@ export default function Login() {
         </View>
 
         <View>
-          <View style={{marginVertical: Metrix.VerticalSize(10)}}>
+          <View style={{ marginVertical: Metrix.VerticalSize(10) }}>
             {email?.length > 0 && (
               <TouchableOpacity
                 style={styles.eyeIconStyle}
@@ -65,7 +65,7 @@ export default function Login() {
             />
           </View>
 
-          <View style={{marginVertical: Metrix.VerticalSize(10)}}>
+          <View style={{ marginVertical: Metrix.VerticalSize(10) }}>
             <TouchableOpacity
               style={styles.eyeIconStyle}
               onPress={() => setSeePassword(!seePassword)}
@@ -89,13 +89,13 @@ export default function Login() {
             <TouchableOpacity
               onPress={() => NavigationService.navigate('ForgotPassword')}
               activeOpacity={0.7}>
-              <Text style={{color: Colors.primary, fontFamily: fonts.Medium}}>
+              <Text style={{ color: Colors.primary, fontFamily: fonts.Medium }}>
                 Forgot Password?
               </Text>
             </TouchableOpacity>
           </View>
 
-          <View style={{marginVertical: Metrix.VerticalSize(40)}}>
+          <View style={{ marginVertical: Metrix.VerticalSize(40) }}>
             <Button
               btnStyle={{
                 width: '98%',
@@ -116,14 +116,14 @@ export default function Login() {
           <View style={styles.socialContainer}>
             <TouchableOpacity
               activeOpacity={0.7}
-              onPress={() => {}}
-              style={{marginHorizontal: Metrix.HorizontalSize(15)}}>
+              onPress={() => { }}
+              style={{ marginHorizontal: Metrix.HorizontalSize(15) }}>
               <Image source={Images.google} resizeMode={'contain'} />
             </TouchableOpacity>
             <TouchableOpacity
               activeOpacity={0.7}
-              onPress={() => {}}
-              style={{marginHorizontal: Metrix.HorizontalSize(15)}}>
+              onPress={() => { }}
+              style={{ marginHorizontal: Metrix.HorizontalSize(15) }}>
               <Image source={Images.facebook} resizeMode={'contain'} />
             </TouchableOpacity>
           </View>
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
   },
-  title: {fontSize: Metrix.customFontSize(28), fontFamily: fonts.Bold},
+  title: { fontSize: Metrix.customFontSize(28), fontFamily: fonts.Bold },
   description: {
     fontSize: Metrix.customFontSize(13),
     marginVertical: Metrix.VerticalSize(10),

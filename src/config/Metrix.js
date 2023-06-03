@@ -1,8 +1,9 @@
-import {Dimensions, PixelRatio, Platform} from 'react-native';
-import {isIphoneX} from './IsIphoneX';
-let {height, width} = Dimensions.get('window');
+import { Dimensions, PixelRatio, Platform } from 'react-native';
+import { Metrix } from '';
+import { isIphoneX } from './IsIphoneX';
+let { height, width } = Dimensions.get('window');
 
-Dimensions.addEventListener('change', ({window, screen}) => {
+Dimensions.addEventListener('change', ({ window, screen }) => {
   height = window.height;
   width = window.width;
 });
@@ -18,7 +19,6 @@ const normalize = size => {
 
 const VerticalSize = (size = 812) => (size / 812) * height;
 const HorizontalSize = (size = 375) => (size / 375) * width;
-
 export default {
   Radius: VerticalSize(20),
   LightRadius: VerticalSize(6),

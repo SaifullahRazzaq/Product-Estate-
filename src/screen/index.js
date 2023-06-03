@@ -2,10 +2,13 @@ import Login from './Auth/Login';
 import SignUp from './Auth/Register';
 import ForgotPassword from './Auth/ForgotPasssword';
 import IntroScreen from './Auth/IntroScreen'
+import Home from './App/Home';
+import Map from './App/Map'
+import Chat from './App/Chat'
+import More from './App/More'
 // import ChangePassword from './Auth/ChangePassword';
 // import PrivacyPolicy from './Auth/PrivacyPolicy';
 // import TermsAndCondition from './Auth/TermsAndConditions';
-// import Home from './App/Home';
 // import Booking from './App/Booking';
 // import Messages from './App/Messages';
 // import More from './App/More';
@@ -24,7 +27,11 @@ export {
     Login,
     SignUp,
     ForgotPassword,
-    IntroScreen
+    IntroScreen,
+    Home,
+    Map,
+    Chat,
+    More
     // ForgotPassword,
     // ChangePassword,
     // PrivacyPolicy,
