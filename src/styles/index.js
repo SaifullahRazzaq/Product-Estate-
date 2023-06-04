@@ -18,17 +18,17 @@ const gStyles = StyleSheet.create({
     padding: Metrix.HorizontalSize(10)
   },
   text: {
-    fontFamily: fonts.Medium,
+    fontFamily: fonts.Regular,
     fontSize: Metrix.customFontSize(13),
     color: Colors.secondaryColor,
   },
   normalText: {
-    fontFamily: fonts.Medium,
+    fontFamily: fonts.Regular,
     fontSize: Metrix.customFontSize(20),
     color: Colors.secondaryColor,
   },
   title: {
-    fontFamily: fonts.Bold,
+    fontFamily: fonts.Medium,
     fontSize: Metrix.customFontSize(28),
     color: Colors.secondaryColor,
   },

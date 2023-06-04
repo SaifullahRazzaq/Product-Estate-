@@ -61,7 +61,7 @@ const list = [
 
 export default function More() {
     return (
-        <View style={{ ...gStyles.shadowCard }}>
+        <View style={{ ...gStyles.shadowCard, paddingHorizontal: 15 }}>
             <Header title="More" />
             <ScrollView style={{ marginTop: Metrix.VerticalSize(10) }}>
                 {list?.map((val, ind) => {
@@ -74,6 +74,9 @@ export default function More() {
                                 </View>
                                 <AntDesign name='arrowright' size={Metrix.customFontSize(15)} color={Colors.secondary} />
                             </TouchableOpacity>
+                            <View style={{ height: 1, width: "100%", backgroundColor: Colors.darkGray }}>
+
+                            </View>
                             {(ind != list?.length - 1) && <View style={{ height: 1, backgroundColor: Colors.secondary }} />}
                         </View>
                     )
