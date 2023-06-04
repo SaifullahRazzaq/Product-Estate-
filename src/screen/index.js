@@ -6,22 +6,15 @@ import Home from './App/Home';
 import Map from './App/Map'
 import Chat from './App/Chat'
 import More from './App/More'
-// import ChangePassword from './Auth/ChangePassword';
-// import PrivacyPolicy from './Auth/PrivacyPolicy';
-// import TermsAndCondition from './Auth/TermsAndConditions';
-// import Booking from './App/Booking';
-// import Messages from './App/Messages';
-// import More from './App/More';
-// import ContactUs from './App/ContactUs';
-// import Profile from './App/Profile';
-// import Notifications from './App/Notifications';
-// import Chat from './App/Chat';
-// import ExtensionRequests from './App/ExtensionRequests';
-// import BankAccounts from './App/BankAccounts';
-// import AddAccount from './App/AddAccount';
-// import SavedTrailers from './App/SavedTrailers';
-// import TrailerDetails from './App/TrailerDetails';
-// import Verification from './Auth/Verification';
+import PrivacyPolicy from './App/PrivacyPolicy';
+import TermsAndCondition from './App/PrivacyPolicy';
+import ContactUs from './App/ContactUs';
+import Profile from './App/Profile';
+import Notifications from './App/Notification';
+import BankAccounts from './App/BankAccount';
+import Facourite from './App/Favourites';
+import MyReview from './App/MyReview';
+import List from './App/List'
 
 export {
     Login,
@@ -31,23 +24,14 @@ export {
     Home,
     Map,
     Chat,
-    More
-    // ForgotPassword,
-    // ChangePassword,
-    // PrivacyPolicy,
-    // TermsAndCondition,
-    // Home,
-    // Booking,
-    // Messages,
-    // More,
-    // ContactUs,
-    // Profile,
-    // Notifications,
-    // Chat,
-    // ExtensionRequests,
-    // BankAccounts,
-    // AddAccount,
-    // SavedTrailers,
-    // TrailerDetails,
-    // Verification
+    More,
+    BankAccounts,
+    Facourite,
+    PrivacyPolicy,
+    TermsAndCondition,
+    ContactUs,
+    Profile,
+    Notifications,
+    MyReview,
+    List
 }

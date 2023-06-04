@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
-import {Colors, Metrix} from '../config';
-import {fonts} from '../config/Constants';
+import { StyleSheet } from 'react-native';
+import { Colors, Metrix } from '../config';
+import { fonts } from '../config/Constants';
 
 const gStyles = StyleSheet.create({
   shadowCard: {
@@ -15,10 +15,16 @@ const gStyles = StyleSheet.create({
     shadowRadius: 4.65,
     backgroundColor: Colors.shadowColor,
     elevation: 3,
+    padding: Metrix.HorizontalSize(10)
   },
   text: {
     fontFamily: fonts.Medium,
     fontSize: Metrix.customFontSize(13),
+    color: Colors.secondaryColor,
+  },
+  normalText: {
+    fontFamily: fonts.Medium,
+    fontSize: Metrix.customFontSize(20),
     color: Colors.secondaryColor,
   },
   title: {
@@ -26,5 +32,10 @@ const gStyles = StyleSheet.create({
     fontSize: Metrix.customFontSize(28),
     color: Colors.secondaryColor,
   },
+  description: {
+    fontFamily: fonts.Regular,
+    fontSize: Metrix.customFontSize(16),
+    color: Colors.darkGray,
+  }
 });
-export {gStyles};
+export { gStyles };

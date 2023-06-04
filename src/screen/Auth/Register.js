@@ -7,9 +7,9 @@ import {
   View,
   Platform,
 } from 'react-native';
-import React, {useState} from 'react';
-import {Colors, Images, Metrix, NavigationService} from '../../config';
-import {Button, Input} from '../../components';
+import React, { useState } from 'react';
+import { Colors, Images, Metrix, NavigationService } from '../../config';
+import { Button, Input } from '../../components';
 
 import {
   emailValidityCheck,
@@ -20,7 +20,7 @@ import {
 } from '../../config/Constants';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {gStyles} from '../../styles';
+import { gStyles } from '../../styles';
 //   import {Toast} from 'react-native-toast-message/lib/src/Toast';
 //   import AuthMiddleware from '../../redux/Middlewares/AuthMiddleware';
 //   import {useDispatch} from 'react-redux';
@@ -323,7 +323,7 @@ export default function SignUp() {
 
   return (
     <View style={gStyles.shadowCard}>
-      <ScrollView style={{paddingHorizontal: Metrix.HorizontalSize(20)}}>
+      <ScrollView >
         <View style={styles.imageContainer}>
           {/* <Image
               source={Images.logoGreen}
@@ -332,12 +332,12 @@ export default function SignUp() {
             /> */}
         </View>
 
-        <View style={{marginVertical: Metrix.VerticalSize(5)}}>
+        <View style={{ marginVertical: Metrix.VerticalSize(5) }}>
           <Text style={styles.title}>Register</Text>
         </View>
 
-        <View style={{marginTop: Metrix.VerticalSize(10)}}>
-          <View style={{marginVertical: Metrix.VerticalSize(10)}}>
+        <View style={{ marginTop: Metrix.VerticalSize(10) }}>
+          <View style={{ marginVertical: Metrix.VerticalSize(10) }}>
             <Text style={gStyles.text}> First Name </Text>
             <Input
               maxLength={25}
@@ -347,7 +347,7 @@ export default function SignUp() {
             />
           </View>
 
-          <View style={{marginVertical: Metrix.VerticalSize(10)}}>
+          <View style={{ marginVertical: Metrix.VerticalSize(10) }}>
             <Text style={gStyles.text}> Last Name </Text>
             <Input
               maxLength={25}
@@ -357,7 +357,7 @@ export default function SignUp() {
             />
           </View>
 
-          <View style={{marginVertical: Metrix.VerticalSize(10)}}>
+          <View style={{ marginVertical: Metrix.VerticalSize(10) }}>
             <Text style={gStyles.text}> Email </Text>
             <Input
               keyboardType="email-address"
@@ -367,7 +367,7 @@ export default function SignUp() {
             />
           </View>
 
-          <View style={{marginVertical: Metrix.VerticalSize(10)}}>
+          <View style={{ marginVertical: Metrix.VerticalSize(10) }}>
             <Text style={gStyles.text}> Phone Number </Text>
 
             <Input
@@ -378,7 +378,7 @@ export default function SignUp() {
             />
           </View>
 
-          <View style={{marginVertical: Metrix.VerticalSize(10)}}>
+          <View style={{ marginVertical: Metrix.VerticalSize(10) }}>
             <TouchableOpacity
               style={styles.eyeIconStyle}
               onPress={() => setSeePassword(!seePassword)}
@@ -458,11 +458,11 @@ export default function SignUp() {
             </TouchableOpacity>
           </View>
 
-          <View style={{marginVertical: Metrix.VerticalSize(30)}}>
+          <View style={{ marginVertical: Metrix.VerticalSize(30) }}>
             <Button
-              btnStyle={{width: '100%'}}
+              btnStyle={{ width: '100%' }}
               buttonText={'Register'}
-              onPress={() => {}}
+              onPress={() => NavigationService.navigate('Login')}
             />
           </View>
 

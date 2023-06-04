@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { FlatList, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Card, Header } from '../../components';
 import { Colors, Metrix } from '../../config';
 import { gStyles } from '../../styles';
@@ -70,36 +70,61 @@ const Home = () => {
 
     }
     return (
-        <View style={{ ...gStyles.shadowCard, padding: Metrix.HorizontalSize(10) }}>
-            <Header />
+        <View style={{ ...gStyles.shadowCard }}>
+            <Header
+                showBack={false}
+                showImage={true}
+                showLocation={true}
+                showSearch={true}
+                location='Saddar Karachi,Pakistan'
+            />
             {/* tab here */}
-
-            <View style={{ flexGrow: 1 }}>
-                <View style={styles.title}>
-                    <Text style={{ ...gStyles.title, fontSize: Metrix.customFontSize(18), left: 6 }}>People Nearest You</Text>
-                    <Text style={{ ...gStyles.text, color: Colors.primaryColor }}>View All</Text>
+            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: Metrix.VerticalSize(80) }}>
+                <View >
+                    <View style={styles.title}>
+                        <Text style={{ ...gStyles.title, fontSize: Metrix.customFontSize(18), left: 6, }}>Nearest You</Text>
+                        <Text style={{ ...gStyles.text, color: Colors.primaryColor }}>View All</Text>
+                    </View>
+                    <FlatList
+                        showsHorizontalScrollIndicator={false}
+                        horizontal
+                        keyExtractor={(index) => { index.toString() }}
+                        data={dataSoure}
+                        renderItem={renderPeopleNearData}
+                    />
                 </View>
-                <FlatList
-                    horizontal
-                    keyExtractor={(index) => { index.toString() }}
-                    data={dataSoure}
-                    renderItem={renderPeopleNearData}
-                />
-            </View>
 
-            <View style={{ flexGrow: 1 }}>
-                <View style={styles.title}>
-                    <Text style={{ ...gStyles.title, fontSize: Metrix.customFontSize(18), left: 6 }}>Recommend For You</Text>
-                    <Text style={{ ...gStyles.text, color: Colors.primaryColor }}>View All</Text>
+                <View>
+                    <View style={styles.title}>
+                        <Text style={{ ...gStyles.title, fontSize: Metrix.customFontSize(18), left: 6 }}>Recommend For You</Text>
+                        <Text style={{ ...gStyles.text, color: Colors.primaryColor }}>View All</Text>
+                    </View>
+                    <FlatList
+                        horizontal
+                        showsVerticalScrollIndicator={false}
+                        keyExtractor={(index) => { index.toString() }}
+                        data={dataSoure}
+                        renderItem={renderRecommendedData}
+
+                    />
                 </View>
-                <FlatList
-                    keyExtractor={(index) => { index.toString() }}
-                    data={dataSoure}
-                    renderItem={renderRecommendedData}
-                    contentContainerStyle={{ marginTop: Metrix.VerticalSize(10), marginBottom: Metrix.VerticalSize(100) }}
 
-                />
-            </View>
+                {/* OutSIde Range */}
+                <View style={{ flexGrow: 1 }}>
+                    <View style={styles.title}>
+                        <Text style={{ ...gStyles.title, fontSize: Metrix.customFontSize(18), left: 6 }}>Other House For You</Text>
+                        <Text style={{ ...gStyles.text, color: Colors.primaryColor }}>View All</Text>
+                    </View>
+                    <FlatList
+                        horizontal
+                        showsVerticalScrollIndicator={false}
+                        keyExtractor={(index) => { index.toString() }}
+                        data={dataSoure}
+                        renderItem={renderRecommendedData}
+
+                    />
+                </View>
+            </ScrollView>
         </View>
     )
 }

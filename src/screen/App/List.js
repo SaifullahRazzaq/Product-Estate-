@@ -1,12 +1,11 @@
 import React, { Component, useState } from 'react';
-import { Text, View, ScrollView, StyleSheet } from 'react-native'
-import { FlatList } from 'react-native-gesture-handler';
+import { FlatList, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Card, Header } from '../../components';
 import { Colors, Metrix } from '../../config';
 import { gStyles } from '../../styles';
 
 
-const Map = () => {
+const Home = () => {
     const [dataSoure, setDataSource] = useState([
         {
             image: "https://www.propertypro.ng/blog/wp-content/uploads/2017/09/210-780x405.jpg",
@@ -53,6 +52,7 @@ const Map = () => {
 
         }
     ])
+
     const renderItem = ({ item, index }) => {
         return (
             <View style={{ margin: Metrix.VerticalSize(5), paddingTop: Metrix.VerticalSize(10) }}>
@@ -65,37 +65,30 @@ const Map = () => {
 
     }
     return (
-        <View style={gStyles.shadowCard}>
+        <View style={{ ...gStyles.shadowCard }}>
             <Header
-                showBack
-                title="Map"
-                rightIconName='ellipsis-vertical' />
-            <View style={{ flex: 1 }}>
-                <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: Metrix.VerticalSize(80) }}>
-                    <View style={{ height: Metrix.VerticalSize(500), backgroundColor: Colors.primaryColor, opacity: 0.3, marginVertical: Metrix.VerticalSize(20), borderRadius: 30 }}>
-                        {/* <Text>Map Show</Text> */}
-                    </View>
-
-                    <View >
-                        <View style={styles.title}>
-                            <Text style={{ ...gStyles.title, fontSize: Metrix.customFontSize(18), left: 6, }}>Filter</Text>
-                            <Text style={{ ...gStyles.text, color: Colors.darkGray }}><Text style={gStyles.text}>(120)</Text> House Found</Text>
-                        </View>
-                        <FlatList
-                            horizontal
-                            showsHorizontalScrollIndicator={false}
-                            keyExtractor={(index) => { index.toString() }}
-                            data={dataSoure}
-                            contentContainerStyle={{ paddingVertical: Metrix.VerticalSize(10) }}
-                            renderItem={renderItem}
-                        />
-                    </View>
-                </ScrollView>
-            </View>
+                title='List'
+                showBack={true}
+                rightIconName='add'
+                showSearch
+            />
+            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: Metrix.VerticalSize(80) }}>
+                {/* tab here */}
+                <View >
+                    <FlatList
+                        showsHorizontalScrollIndicator={false}
+                        keyExtractor={(index) => { index.toString() }}
+                        data={dataSoure}
+                        contentContainerStyle={{ paddingVertical: Metrix.VerticalSize(10) }}
+                        renderItem={renderItem}
+                    />
+                </View>
+            </ScrollView>
         </View>
     )
 }
-export default Map;
+export default Home;
+
 const styles = StyleSheet.create({
     title: {
         flexDirection: 'row',

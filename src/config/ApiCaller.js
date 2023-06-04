@@ -1,12 +1,12 @@
 import Axios from 'axios';
 import Toast from 'react-native-toast-message';
-import {NavigationService} from '.';
-import {ToastError} from './Constants';
-import {Store} from '../redux';
-import {AuthAction} from '../redux/Actions';
+import { NavigationService } from '.';
+import { ToastError } from './Constants';
+import { Store } from '../redux';
+import { AuthAction } from '../redux/Actions';
 
 // live url NT
-export var baseUrl = 'https://api.neighborstrailer.com/';
+export var baseUrl = 'https://real-estate-app.herokuapp.com/';
 // export var baseUrl = 'http://216.108.238.109:8183/';
 //black api
 // export var baseUrl = 'http://216.108.238.109:2215/api/';
@@ -20,7 +20,7 @@ Axios.interceptors.response.use(
   response => {
     return response;
   },
-  async ({response, ...rest}) => {
+  async ({ response, ...rest }) => {
     if (response?.status == 401) {
       try {
         // let {
@@ -43,7 +43,7 @@ Axios.interceptors.response.use(
       }
     } else if (response.status == 0) {
       // console.log('response', response);
-      return {...response, data: {message: response?._response}};
+      return { ...response, data: { message: response?._response } };
     }
     return response;
   },
@@ -98,7 +98,7 @@ export default class ApiCaller {
     body = {},
     headers = {},
     cutomUrl = '',
-    onUploadProgress = () => {},
+    onUploadProgress = () => { },
   ) => {
     console.log('API CALL===>>> POST', endPoint, body, headers);
     return Axios.post(cutomUrl ? cutomUrl : `${baseUrl}${endPoint}`, body, {
@@ -114,7 +114,7 @@ export default class ApiCaller {
 
   static Put = (url = '', body = {}, headers = {}) => {
     return Axios.put(`${baseUrl}${url}`, body, {
-      headers: {'Content-Type': 'application/json', ...headers},
+      headers: { 'Content-Type': 'application/json', ...headers },
     })
       .then(res => res)
       .catch(err => err.response);
@@ -122,7 +122,7 @@ export default class ApiCaller {
 
   static Delete = (url = '', body = {}, headers = {}) => {
     return Axios.delete(`${baseUrl}${url}`, {
-      headers: {'Content-Type': 'application/json', ...headers},
+      headers: { 'Content-Type': 'application/json', ...headers },
       data: body,
     })
       .then(res => res)

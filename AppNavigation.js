@@ -2,7 +2,7 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Colors, Metrix, NavigationService } from './src/config';
-import { ForgotPassword, IntroScreen, Login, SignUp, Home } from './src/screen';
+import { ForgotPassword, IntroScreen, Login, SignUp, Home, PrivacyPolicy, TermsAndCondition, Notifications, Profile, Chat, BankAccounts, MyReview, Facourite, ContactUs, } from './src/screen';
 import { BottomTabs, Button } from './src/components';
 import { ActivityIndicator, View } from 'react-native';
 import { connect } from 'react-redux';
@@ -18,6 +18,7 @@ const AuthStack = () => {
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Intro" component={IntroScreen} />
+      <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
 
       {/* <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="ChangePassword" component={ChangePassword} />
@@ -44,25 +45,30 @@ const UserStack = props => {
       }>
       <Stack.Screen name="BottomTabs" component={BottomTabs} />
       <Stack.Screen name="Home" component={Home} />
-      {/* <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
+      <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
       <Stack.Screen name="TermsAndConditions" component={TermsAndCondition} />
-      <Stack.Screen name="ChangePassword" component={ChangePassword} />
       <Stack.Screen name="Notifications" component={Notifications} />
       <Stack.Screen
         name="Profile"
         component={Profile}
-        options={{gestureEnabled: false}}
+        options={{ gestureEnabled: false }}
       />
       <Stack.Screen name="Chat" component={Chat} />
+      <Stack.Screen name="BankAccounts" component={BankAccounts} />
+      <Stack.Screen name="MyReviews" component={MyReview} />
+      <Stack.Screen name="Favourites" component={Facourite} />
+      <Stack.Screen name="ContactUs" component={ContactUs} />
+      <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+
+      {/* 
+     
       <Stack.Screen name="ExtensionRequests" component={ExtensionRequests} />
       <Stack.Screen name="DateChangeRequests" component={DateChangeRequests} />
-      <Stack.Screen name="BankAccounts" component={BankAccounts} />
       <Stack.Screen name="AddAccount" component={AddAccount} />
       <Stack.Screen name="SavedTrailers" component={SavedTrailers} />
       <Stack.Screen name="BookingDetail" component={BookingDetail} />
       <Stack.Screen name="SpentAmount" component={SpentAmount} />
       <Stack.Screen name="Library" component={Liberary} />
-      <Stack.Screen name="MyReviews" component={MyReviews} />
       <Stack.Screen name="LibraryFaqs" component={LibraryFaqs} />
       <Stack.Screen name="LibraryMediaDetail" component={LibraryMediaDetail} />
       <Stack.Screen name="VideoPlayerScreen" component={VideoPlayerScreen} />

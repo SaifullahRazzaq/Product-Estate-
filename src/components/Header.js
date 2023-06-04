@@ -1,43 +1,66 @@
-import React from 'react';
-import { Image, Platform, PlatformColor, StyleSheet, Text, View } from 'react-native';
-import { Colors, Metrix } from '../config';
+import React, { useState } from 'react';
+import { Image, StyleSheet, Text, View } from 'react-native';
+import { Colors, Metrix, NavigationService } from '../config';
 import { gStyles } from '../styles';
 import { fonts } from '../config/Constants';
-import TextField from './Input';
-import { IconComp } from '.';
-const Header = ({ title, location }) => {
+import { IconComp, Input } from './index';
+import Ionicons from 'react-native-vector-icons/Ionicons'
+const Header = ({ title, location, showLocation = false, showSearch = false, showBack = true, rightIconName, showImage = false }) => {
+    const [search, setSearch] = useState("")
+    const goBack = () => {
+        NavigationService.goBack('')
+    }
     return (<View style={styles.container}>
-        <View style={styles.rowContainer}>
-            <View style={{ flexDirection: 'row' }}>
-                <IconComp iconName='menu' />
-                <View style={styles.textContainer}>
-                    <Text style={{ ...gStyles.text, color: Colors.primaryColor }}>Location</Text>
-                    <Text style={{ ...gStyles.text, fontFamily: fonts.Bold }}>Saddar Karachi ,Pakistan</Text>
-                </View>
+        <View style={{ ...styles.rowContainer }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: "50%" }}>
+                <IconComp iconName={showBack ? 'arrow-back' : 'menu'} onPress={goBack} />
+                {showLocation ?
+                    <View style={styles.textContainer}>
+                        <Text style={{ ...gStyles.text, color: Colors.primaryColor }}>Location</Text>
+                        <Text style={{ ...gStyles.text, fontFamily: fonts.Bold }}>{location}</Text>
+                    </View> :
+                    <View style={{ justifyContent: 'center' }}>
+                        <Text style={{ ...gStyles.title, fontSize: Metrix.customFontSize(20), fontFamily: fonts.Black }}>{title}</Text>
+                    </View>
+                }
             </View>
             <View>
-                <Image source={{ uri: 'https://as2.ftcdn.net/v2/jpg/02/14/74/61/1000_F_214746128_31JkeaP6rU0NzzzdFC4khGkmqc8noe6h.jpg' }} resizeMode='contain' style={styles.imageStyle} />
+                {rightIconName ? <IconComp iconName={rightIconName} /> : showImage ? <Image source={{ uri: 'https://as2.ftcdn.net/v2/jpg/02/14/74/61/1000_F_214746128_31JkeaP6rU0NzzzdFC4khGkmqc8noe6h.jpg' }} resizeMode='center' style={styles.imageStyle} />
+                    : null}
             </View>
         </View>
         {/* search area */}
-        <View style={styles.searchContainer}>
-            <TextField style={{ width: Metrix.HorizontalSize(300), marginHorizontal: Metrix.HorizontalSize(5) }} />
-            <IconComp iconName='filter' iconStyle={{ marginTop: 5 }} />
+        {
+            showSearch &&
+            <View style={styles.searchContainer}>
+                <View style={styles.eyeIconStyle}>
+                    <Ionicons
+                        name={'search'}
+                        color={Colors.secondaryColor}
+                        size={Metrix.customFontSize(20)}
+                    />
+                </View>
 
-        </View>
-    </View>
+                <Input
+                    value={"Seacrh Here"}
+                    style={{ paddingLeft: Metrix.HorizontalSize(40), width: "85%" }}
+                    onChangeText={text => setSearch(text)}
+                    placeholder={'Search Favourites'}
+                />
+
+                <IconComp iconName='options' iconStyle={{ justifyContent: 'center', top: 5 }} />
+            </View>
+        }
+    </View >
     )
 }
 export default Header;
 
 const styles = StyleSheet.create({
     container: {
-        // flex: 1,
-        justifyContent: 'center',
         width: "100%",
-        // justifyContent: 'center',
-        paddingTop: Platform.OS = "ios" ? Metrix.HorizontalSize(60) : 0,
-        // paddingHorizontal: Metrix.HorizontalSize(15)
+        justifyContent: 'center',
+        paddingTop: Metrix.HorizontalSize(60),
     },
     rowContainer: {
         flexDirection: 'row',
@@ -49,14 +72,20 @@ const styles = StyleSheet.create({
         bottom: 5
     },
     imageStyle: {
-        width: Metrix.HorizontalSize(70),
+        width: Metrix.HorizontalSize(60),
         height: Metrix.VerticalSize(50),
-        borderRadius: 10
+        borderRadius: 15
     },
     searchContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        paddingTop: Metrix.VerticalSize(20)
-    }
+    },
+    eyeIconStyle: {
+        // width: "100%",
+        position: 'absolute',
+        zIndex: 100,
+        top: Metrix.VerticalSize(20),
+        left: Metrix.HorizontalSize(10),
+    },
 })

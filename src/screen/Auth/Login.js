@@ -23,7 +23,7 @@ export default function Login() {
   };
   return (
     <View style={gStyles.shadowCard}>
-      <ScrollView style={{ paddingHorizontal: Metrix.HorizontalSize(20) }}>
+      <ScrollView >
         <View style={styles.imageContainer}>
           {/* <Image
             source={{uri:'https://www.shutterstock.com/image-vector/user-login-authenticate-icon-human-600w-1365533969.jpg'}}

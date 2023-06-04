@@ -6,11 +6,12 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Colors, Metrix } from '../config';
 import { useSelector } from 'react-redux';
-import { Chat, Home, More, Map } from '../screen';
+import { Chat, Home, More, Map, List } from '../screen';
+import { fonts } from '../config/Constants';
 
 const BottomTabs = () => {
   const Tab = createBottomTabNavigator();
-  let icons = ['Home', 'Map', 'Chat', 'more'];
+  let icons = ['Home', 'Map', 'List', 'Chat', 'more'];
   // const bookingCount = useSelector(state => state.AuthReducer?.bookingCount);
   // const messageCount = useSelector(state => state.AuthReducer?.messageCount);
   // console.log('bookingCount', bookingCount);
@@ -50,7 +51,7 @@ const BottomTabs = () => {
                     height: 45,
                     borderRadius: 70 / 2,
                   }}>
-                  {icons[index] === 'home' ? (
+                  {icons[index] === 'Home' ? (
                     <Ionicons
                       name={
                         props.state.index == index && icons[index] === 'home'
@@ -60,11 +61,11 @@ const BottomTabs = () => {
                       size={Metrix.customFontSize(20)}
                       color={
                         props.state.index == index
-                          ? Colors.primary
-                          : Colors.placeholderGray
+                          ? Colors.secondaryColor
+                          : Colors.primaryColor
                       }
                     />
-                  ) : icons[index] === 'booking' ? (
+                  ) : icons[index] === 'Map' ? (
                     <View>
                       {/* {bookingCount ? ( */}
                       <View
@@ -83,61 +84,78 @@ const BottomTabs = () => {
                       />
                       {/* ) : null} */}
                       <FontAwesome
-                        name={'calendar-o'}
+                        name={'map-marker'}
                         size={Metrix.customFontSize(20)}
                         color={
                           props.state.index == index
-                            ? Colors.primary
-                            : Colors.placeholderGray
+                            ? Colors.secondaryColor
+                            : Colors.primaryColor
                         }
                       />
                     </View>
-                  ) : icons[index] === 'messages' ? (
-                    <View>
-                      {/* {messageCount ? ( */}
-                      <View
-                        style={{
-                          position: 'absolute',
-                          top: Metrix.VerticalSize(-5),
-                          right: Metrix.HorizontalSize(-20),
-                          zIndex: 2,
-                          borderRadius: 12,
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          backgroundColor: Colors.red,
-                          height: Metrix.HorizontalSize(10),
-                          width: Metrix.HorizontalSize(10),
-                        }}
-                      />
-                      {/* ) : null} */}
-                      <MaterialCommunityIcons
-                        name={'message-processing'}
+                  )
+                    : icons[index] === 'List' ? (
+                      <Ionicons
+                        name={
+                          props.state.index == index && icons[index] === 'List'
+                            ? icons[index]
+                            : 'list'
+                        }
                         size={Metrix.customFontSize(20)}
                         color={
                           props.state.index == index
-                            ? Colors.primary
-                            : Colors.placeholderGray
+                            ? Colors.secondaryColor
+                            : Colors.primaryColor
                         }
                       />
-                    </View>
-                  ) : (
-                    <MaterialCommunityIcons
-                      name={'dots-horizontal'}
-                      size={Metrix.customFontSize(20)}
-                      color={
-                        props.state.index == index
-                          ? Colors.primary
-                          : Colors.placeholderGray
-                      }
-                    />
-                  )}
+                    )
+                      : icons[index] === 'Chat' ? (
+                        <View>
+                          {/* {messageCount ? ( */}
+                          <View
+                            style={{
+                              position: 'absolute',
+                              top: Metrix.VerticalSize(-5),
+                              right: Metrix.HorizontalSize(-20),
+                              zIndex: 2,
+                              borderRadius: 12,
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              // backgroundColor: Colors.red,
+                              height: Metrix.HorizontalSize(10),
+                              width: Metrix.HorizontalSize(10),
+                            }}
+                          />
+                          {/* ) : null} */}
+                          <MaterialCommunityIcons
+                            name={'message-processing'}
+                            size={Metrix.customFontSize(20)}
+                            color={
+                              props.state.index == index
+                                ? Colors.secondaryColor
+                                : Colors.primaryColor
+                            }
+                          />
+                        </View>
+                      ) : (
+                        <MaterialCommunityIcons
+                          name={'dots-horizontal'}
+                          size={Metrix.customFontSize(20)}
+                          color={
+                            props.state.index == index
+                              ? Colors.secondaryColor
+                              : Colors.primaryColor
+                          }
+                        />
+                      )}
                   <Text
                     style={{
+                      fontFamily: fonts.Medium,
                       color:
                         props.state.index == index
-                          ? Colors.primary
-                          : Colors.placeholderGray,
-                      fontSize: Metrix.customFontSize(8.5),
+                          ? Colors.secondaryColor
+                          : Colors.primaryColor,
+                      fontSize: Metrix.customFontSize(12),
                       marginTop: Metrix.VerticalSize(5),
                     }}>
                     {val.name}
@@ -189,7 +207,7 @@ const BottomTabs = () => {
                 <FontAwesome
                   name={'home'}
                   size={25}
-                  color={focused ? Colors.secondaryColor : Colors.white}
+                  color={focused ? Colors.primaryColor : Colors.secondaryColor}
                 />
               </View>
             ),
@@ -206,12 +224,29 @@ const BottomTabs = () => {
                 <FontAwesome
                   name={'search'}
                   size={25}
-                  color={focused ? Colors.secondaryColor : Colors.black}
+                  color={focused ? Colors.primaryColor : Colors.secondaryColor}
                 />
               </View>
             ),
           }}
         />
+
+        <Tab.Screen
+          name="List"
+          component={List}
+          options={{
+            tabBarIcon: ({ focused }) => (
+              <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                <FontAwesome
+                  name={'user'}
+                  size={25}
+                  color={focused ? Colors.primaryColor : Colors.secondaryColor}
+                />
+              </View>
+            ),
+          }}
+        />
+
         <Tab.Screen
           name="Chat"
           component={Chat}
@@ -221,7 +256,7 @@ const BottomTabs = () => {
                 <MaterialCommunityIcons
                   name={'weight-lifter'}
                   size={25}
-                  color={focused ? Colors.secondaryColor : Colors.black}
+                  color={focused ? Colors.primaryColor : Colors.secondaryColor}
                 />
               </View>
             ),
@@ -236,7 +271,7 @@ const BottomTabs = () => {
                 <FontAwesome
                   name={'user'}
                   size={25}
-                  color={focused ? Colors.secondaryColor : Colors.black}
+                  color={focused ? Colors.primaryColor : Colors.secondaryColor}
                 />
               </View>
             ),
@@ -261,7 +296,7 @@ const styles = StyleSheet.create({
   activeDotStyle: {
     padding: 3,
     borderRadius: 3,
-    backgroundColor: Colors.primary,
+    // backgroundColor: Colors.secondaryColor,
     marginTop: Metrix.VerticalSize(10),
   },
 });

@@ -6,11 +6,11 @@ import {
   TouchableOpacity,
   Keyboard,
 } from 'react-native';
-import {Colors, Images, Metrix} from '../config';
+import { Colors, Images, Metrix } from '../config';
 
 function TextField({
   secureTextEntry = false,
-  onChangeText = () => {},
+  onChangeText = () => { },
   value = '',
   placeholderTextColor = Colors.secondary,
   style = {},
@@ -25,7 +25,7 @@ function TextField({
     <>
       <TextInput
         maxLength={maxLength}
-        style={{...styles.input, ...style}}
+        style={{ ...styles.input, ...style }}
         placeholder={placeholder}
         keyboardType={keyboardType}
         value={value}
@@ -35,7 +35,7 @@ function TextField({
         onChangeText={onChangeText}
         placeholderTextColor={placeholderTextColor}
         editable={disable}
-        // onSubmitEditing={() => Keyboard.dismiss()}
+      // onSubmitEditing={() => Keyboard.dismiss()}
       />
     </>
   );
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   input: {
     marginTop: Metrix.VerticalSize(10),
     width: '100%',
-    alignSelf:'center',
+    alignSelf: 'center',
     height: Metrix.VerticalSize(44),
     fontSize: Metrix.customFontSize(12),
     padding: 5,
