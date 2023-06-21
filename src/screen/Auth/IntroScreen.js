@@ -1,13 +1,12 @@
 import React, {useState} from 'react';
 // import all the components we are going to use
-import {SafeAreaView, StyleSheet, View, Text, Image} from 'react-native';
+import {SafeAreaView, StyleSheet, View, Text, Image,TouchableOpacity} from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import {Button} from '../../components';
 import {Colors, Metrix} from '../../config';
 import {fonts} from '../../config/Constants';
 import {gStyles} from '../../styles';
 import Feather from 'react-native-vector-icons/Feather';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const slides = [
   {
@@ -39,7 +38,7 @@ const slides = [
   },
 ];
 
-const App = () => {
+const IntroScreen = () => {
   const [showRealApp, setShowRealApp] = useState(false);
 
   const onDone = () => {
@@ -130,7 +129,7 @@ const App = () => {
   );
 };
 
-export default App;
+export default IntroScreen;
 
 const styles = StyleSheet.create({
   titleStyle: {

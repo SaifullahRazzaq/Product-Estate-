@@ -7,9 +7,9 @@ import {
   View,
   Platform,
 } from 'react-native';
-import React, { useState } from 'react';
-import { Colors, Images, Metrix, NavigationService } from '../../config';
-import { Button, Input } from '../../components';
+import React, {useState} from 'react';
+import {Colors, Images, Metrix, NavigationService} from '../../config';
+import {Button, Input} from '../../components';
 
 import {
   emailValidityCheck,
@@ -20,10 +20,10 @@ import {
 } from '../../config/Constants';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { gStyles } from '../../styles';
-//   import {Toast} from 'react-native-toast-message/lib/src/Toast';
-//   import AuthMiddleware from '../../redux/Middlewares/AuthMiddleware';
-//   import {useDispatch} from 'react-redux';
+import {gStyles} from '../../styles';
+import {AuthMiddleware} from '../../redux/Middlewares';
+  import {Toast} from 'react-native-toast-message/lib/src/Toast';
+import { useDispatch } from 'react-redux';
 //   import {
 //     GoogleSignin,
 //     statusCodes,
@@ -45,93 +45,94 @@ import { gStyles } from '../../styles';
 //   import TextInputMask from 'react-native-text-input-mask';
 
 export default function SignUp() {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [firstName, setFirstName] = useState('testing');
+  const [lastName, setLastName] = useState('user');
+  const [phoneNumber, setPhoneNumber] = useState('1234567890');
+  const [email, setEmail] = useState('testing@mailinator.com');
+  const [password, setPassword] = useState('1234567890');
   const [isChecked, setIsChecked] = useState(false);
   const [deviceToken, setDeviceToken] = useState('');
   const [isPasswordValid, setIsPasswordValid] = useState(false);
   const [seePassword, setSeePassword] = useState(false);
+  const dispatch = useDispatch();
 
   // React.useEffect(() => {
   //   getToken();
   // }, []);
 
-  // const dispatch = useDispatch();
 
   // const getToken = async () => {
   //   const token = await messaging().getToken();
   //   setDeviceToken(token);
   // };
 
-  // const isTrueString = str => {
-  //   return str.match(/[a-zA-Z]/);
-  // };
+  const isTrueString = str => {
+    return str.match(/[a-zA-Z]/);
+  };
 
-  // const registerUser = () => {
-  //   if (!isChecked) {
-  //     Toast.show(ToastError('Please agree to our Terms and Policies'));
-  //     return;
-  //   }
-  //   setIsPasswordValid(false);
-  //   if (!firstName || !lastName || !email || !phoneNumber || !password) {
-  //     Toast.show(ToastError('All fields are required!'));
-  //     return;
-  //   }
+    const registerUser = () => {
+    if (!isChecked) {
+      Toast.show(ToastError('Please agree to our Terms and Policies'));
+      return;
+    }
+    setIsPasswordValid(false);
+    if (!firstName || !lastName || !email || !phoneNumber || !password) {
+      Toast.show(ToastError('All fields are required!'));
+      return;
+    }
 
-  //   if (password.length < 8) {
-  //     Toast.show(ToastError('Password should be atleast 8 characters'));
-  //     return;
-  //   }
+    if (password.length < 8) {
+      Toast.show(ToastError('Password should be atleast 8 characters'));
+      return;
+    }
 
-  //   if (!emailValidityCheck(email)) {
-  //     Toast.show(ToastError('Invalid email, Enter a valid email'));
-  //     return;
-  //   }
+    if (!emailValidityCheck(email)) {
+      Toast.show(ToastError('Invalid email, Enter a valid email'));
+      return;
+    }
 
-  //   if (!isPasswordAlphaNumeric(password)) {
-  //     return setIsPasswordValid(true);
-  //   }
+    if (!isPasswordAlphaNumeric(password)) {
+      return setIsPasswordValid(true);
+    }
 
-  //   if (phoneNumber.length < 7) {
-  //     return Toast.show(ToastError('Invalid phone number'));
-  //   }
+    if (phoneNumber.length < 7) {
+      return Toast.show(ToastError('Invalid phone number'));
+    }
 
-  //   if (!isTrueString(firstName)) {
-  //     return Toast.show(ToastError('Invalid First Name'));
-  //   }
-  //   if (!isTrueString(lastName)) {
-  //     return Toast.show(ToastError('Invalid Last Name'));
-  //   }
+    if (!isTrueString(firstName)) {
+      return Toast.show(ToastError('Invalid First Name'));
+    }
+    if (!isTrueString(lastName)) {
+      return Toast.show(ToastError('Invalid Last Name'));
+    }
 
-  //   dispatch(
-  //     AuthMiddleware.Register({
-  //       firstName,
-  //       lastName,
-  //       email,
-  //       phoneNumber,
-  //       password,
-  //       deviceToken,
-  //       appType: 4,
-  //       isCheckOutUser: false,
-  //       isSocialRegister: false,
-  //     }),
-  //   )
-  //     .then(data => {
-  //       setFirstName('');
-  //       setLastName(''), setEmail('');
-  //       setPassword('');
-  //       setPhoneNumber('');
-  //       Toast.show(ToastSuccess('Please verify OTP sent to your email.'));
-  //       NavigationService.navigate('Verification', {
-  //         email: email,
-  //         commingFromScreen: 'register',
-  //       });
-  //     })
-  //     .catch(err => console.warn(err));
-  // };
+    dispatch(
+      AuthMiddleware.Register({
+        email: email,
+        password: password,
+        firstName: firstName,
+        lastName: lastName,
+        phoneNumber: phoneNumber,
+        agencyId: 1,
+        profilePicture: "",
+        userType: 'Buyer',
+      }),
+    )
+      .then(data => {
+        console.warn(data)
+        setFirstName('');
+        setLastName(''), 
+        setEmail('');
+        setPassword('');
+        setPhoneNumber('');
+        // Toast.show(ToastSuccess('Please verify OTP sent to your email.'));
+        // NavigationService.navigate('Verification', {
+        //   email: email,
+        //   commingFromScreen: 'register',
+        // });
+      })
+      .catch(err => console.warn(err));
+  };
 
   // const onGogglePressed = async () => {
   //   if (!isChecked) {
@@ -323,7 +324,7 @@ export default function SignUp() {
 
   return (
     <View style={gStyles.shadowCard}>
-      <ScrollView >
+      <ScrollView>
         <View style={styles.imageContainer}>
           {/* <Image
               source={Images.logoGreen}
@@ -332,12 +333,12 @@ export default function SignUp() {
             /> */}
         </View>
 
-        <View style={{ marginVertical: Metrix.VerticalSize(5) }}>
+        <View style={{marginVertical: Metrix.VerticalSize(5)}}>
           <Text style={styles.title}>Register</Text>
         </View>
 
-        <View style={{ marginTop: Metrix.VerticalSize(10) }}>
-          <View style={{ marginVertical: Metrix.VerticalSize(10) }}>
+        <View style={{marginTop: Metrix.VerticalSize(10)}}>
+          <View style={{marginVertical: Metrix.VerticalSize(10)}}>
             <Text style={gStyles.text}> First Name </Text>
             <Input
               maxLength={25}
@@ -347,7 +348,7 @@ export default function SignUp() {
             />
           </View>
 
-          <View style={{ marginVertical: Metrix.VerticalSize(10) }}>
+          <View style={{marginVertical: Metrix.VerticalSize(10)}}>
             <Text style={gStyles.text}> Last Name </Text>
             <Input
               maxLength={25}
@@ -357,7 +358,7 @@ export default function SignUp() {
             />
           </View>
 
-          <View style={{ marginVertical: Metrix.VerticalSize(10) }}>
+          <View style={{marginVertical: Metrix.VerticalSize(10)}}>
             <Text style={gStyles.text}> Email </Text>
             <Input
               keyboardType="email-address"
@@ -367,7 +368,7 @@ export default function SignUp() {
             />
           </View>
 
-          <View style={{ marginVertical: Metrix.VerticalSize(10) }}>
+          <View style={{marginVertical: Metrix.VerticalSize(10)}}>
             <Text style={gStyles.text}> Phone Number </Text>
 
             <Input
@@ -378,7 +379,7 @@ export default function SignUp() {
             />
           </View>
 
-          <View style={{ marginVertical: Metrix.VerticalSize(10) }}>
+          <View style={{marginVertical: Metrix.VerticalSize(10)}}>
             <TouchableOpacity
               style={styles.eyeIconStyle}
               onPress={() => setSeePassword(!seePassword)}
@@ -458,11 +459,11 @@ export default function SignUp() {
             </TouchableOpacity>
           </View>
 
-          <View style={{ marginVertical: Metrix.VerticalSize(30) }}>
+          <View style={{marginVertical: Metrix.VerticalSize(30)}}>
             <Button
-              btnStyle={{ width: '100%' }}
+              btnStyle={{width: '100%'}}
               buttonText={'Register'}
-              onPress={() => NavigationService.navigate('Login')}
+              onPress={registerUser}
             />
           </View>
 

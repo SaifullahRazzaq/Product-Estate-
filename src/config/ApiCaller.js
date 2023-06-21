@@ -5,7 +5,7 @@ import { ToastError } from './Constants';
 import { Store } from '../redux';
 import { AuthAction } from '../redux/Actions';
 
-// live url NT
+// local url NT
 export var baseUrl = 'https://real-estate-app.herokuapp.com/';
 // export var baseUrl = 'http://216.108.238.109:8183/';
 //black api

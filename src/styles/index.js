@@ -13,7 +13,7 @@ const gStyles = StyleSheet.create({
     },
     shadowOpacity: 0.29,
     shadowRadius: 4.65,
-    backgroundColor: Colors.shadowColor,
+    backgroundColor: Colors.white,
     elevation: 3,
     padding: Metrix.HorizontalSize(10)
   },

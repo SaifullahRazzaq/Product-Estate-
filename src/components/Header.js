@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     container: {
         width: "100%",
         justifyContent: 'center',
-        paddingTop: Metrix.HorizontalSize(60),
+        // paddingTop: Metrix.HorizontalSize(60),
     },
     rowContainer: {
         flexDirection: 'row',

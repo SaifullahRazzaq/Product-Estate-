@@ -15,6 +15,7 @@ import BankAccounts from './App/BankAccount';
 import Facourite from './App/Favourites';
 import MyReview from './App/MyReview';
 import List from './App/List'
+import Verification from './Auth/Verification';
 
 export {
     Login,
@@ -33,5 +34,6 @@ export {
     Profile,
     Notifications,
     MyReview,
-    List
+    List,
+    Verification
 }

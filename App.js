@@ -22,6 +22,7 @@ import Toast, {
   SuccessToast,
 } from 'react-native-toast-message';
 import AppNavigation from './AppNavigation.js';
+import { gStyles } from './src/styles';
 // import SplashScreen from 'react-native-splash-screen';
 // import messaging from '@react-native-firebase/messaging';
 // import PushNotificationIOS from '@react-native-community/push-notification-ios';
@@ -247,43 +248,47 @@ const App = () => {
 
   return (
     <>
-        <Provider store={Store}>
-          <PersistGate loading={null} persistor={Persistor}>
-            {Platform.OS === 'ios' ? (
+      <Provider store={Store}>
+        <PersistGate loading={null} persistor={Persistor}>
+          {Platform.OS === 'ios' ? (
+            <SafeAreaView style={gStyles.shadowCard}>
               <KeyboardAvoidingView style={{flex: 1}} behavior="padding">
                 <AppNavigation />
               </KeyboardAvoidingView>
-            ) : (
+            </SafeAreaView>
+          ) : (
+            <SafeAreaView  style={gStyles.shadowCard}>
               <AppNavigation />
-            )}
-          </PersistGate>
-        </Provider>
-        <Toast
-          config={{
-            error: props => (
-              <ErrorToast
-                {...props}
-                // style={[styles.style, styles.errorStyle]}
-                // contentContainerStyle={styles.contentContainerStyle}
-                // text1Style={styles.text1Style}
-                text1NumberOfLines={2}
-                // text2Style={styles.text2Style}
-                text2NumberOfLines={2}
-              />
-            ),
-            success: props => (
-              <SuccessToast
-                {...props}
-                // style={[styles.style, styles.errorStyle]}
-                // contentContainerStyle={styles.contentContainerStyle}
-                // text1Style={styles.text1Style}
-                text1NumberOfLines={2}
-                // text2Style={styles.text2Style}
-                text2NumberOfLines={4}
-              />
-            ),
-          }}
-        />
+            </SafeAreaView>
+          )}
+        </PersistGate>
+      </Provider>
+      <Toast
+        config={{
+          error: props => (
+            <ErrorToast
+              {...props}
+              // style={[styles.style, styles.errorStyle]}
+              // contentContainerStyle={styles.contentContainerStyle}
+              // text1Style={styles.text1Style}
+              text1NumberOfLines={2}
+              // text2Style={styles.text2Style}
+              text2NumberOfLines={2}
+            />
+          ),
+          success: props => (
+            <SuccessToast
+              {...props}
+              // style={[styles.style, styles.errorStyle]}
+              // contentContainerStyle={styles.contentContainerStyle}
+              // text1Style={styles.text1Style}
+              text1NumberOfLines={2}
+              // text2Style={styles.text2Style}
+              text2NumberOfLines={4}
+            />
+          ),
+        }}
+      />
     </>
     // </SafeAreaView>
   );

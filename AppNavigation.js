@@ -1,24 +1,41 @@
 import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { Colors, Metrix, NavigationService } from './src/config';
-import { ForgotPassword, IntroScreen, Login, SignUp, Home, PrivacyPolicy, TermsAndCondition, Notifications, Profile, Chat, BankAccounts, MyReview, Facourite, ContactUs, } from './src/screen';
-import { BottomTabs, Button } from './src/components';
-import { ActivityIndicator, View } from 'react-native';
-import { connect } from 'react-redux';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import {Colors, Metrix, NavigationService} from './src/config';
+import {
+  ForgotPassword,
+  IntroScreen,
+  Login,
+  SignUp,
+  Home,
+  PrivacyPolicy,
+  TermsAndCondition,
+  Notifications,
+  Profile,
+  Chat,
+  BankAccounts,
+  MyReview,
+  Facourite,
+  ContactUs,
+  Verification,
+} from './src/screen';
+import {BottomTabs, Button} from './src/components';
+import {ActivityIndicator, View} from 'react-native';
+import {connect} from 'react-redux';
 const Stack = createStackNavigator();
 
 //Auth Stack
 const AuthStack = () => {
   return (
     <Stack.Navigator
-      screenOptions={{ headerShown: false }}
-      initialRouteName="Login">
+      screenOptions={{headerShown: false}}
+      initialRouteName="Verification">
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Intro" component={IntroScreen} />
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+      <Stack.Screen name="Verification" component={Verification} />
 
       {/* <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="ChangePassword" component={ChangePassword} />
@@ -34,7 +51,7 @@ const UserStack = props => {
   // const {user} = useSelector(state => state.AuthReducer);
   return (
     <Stack.Navigator
-      screenOptions={{ headerShown: false }}
+      screenOptions={{headerShown: false}}
       initialRouteName={
         'BottomTabs'
         // user?.isSocialRegister
@@ -51,7 +68,7 @@ const UserStack = props => {
       <Stack.Screen
         name="Profile"
         component={Profile}
-        options={{ gestureEnabled: false }}
+        options={{gestureEnabled: false}}
       />
       <Stack.Screen name="Chat" component={Chat} />
       <Stack.Screen name="BankAccounts" component={BankAccounts} />
@@ -86,14 +103,14 @@ class AppNavigation extends React.Component {
 
   render() {
     // const loading = useSelector(state => state.LoaderReducer.loading);
-    let { loading, user } = this.props;
+    let {loading, user} = this.props;
     return (
       <>
         <NavigationContainer
           ref={ref => NavigationService.setTopLevelNavigator(ref)}>
           <Stack.Navigator
-            screenOptions={{ headerShown: false }}
-          // initialRouteName={!user ? 'AuthStack' : 'UserStack'}
+            screenOptions={{headerShown: false}}
+            // initialRouteName={!user ? 'AuthStack' : 'UserStack'}
           >
             <Stack.Screen name="AuthStack" component={AuthStack} />
             <Stack.Screen name="UserStack" component={UserStack} />
