@@ -22,8 +22,8 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {gStyles} from '../../styles';
 import {AuthMiddleware} from '../../redux/Middlewares';
-  import {Toast} from 'react-native-toast-message/lib/src/Toast';
-import { useDispatch } from 'react-redux';
+import {Toast} from 'react-native-toast-message/lib/src/Toast';
+import {useDispatch} from 'react-redux';
 //   import {
 //     GoogleSignin,
 //     statusCodes,
@@ -48,7 +48,7 @@ export default function SignUp() {
   const [firstName, setFirstName] = useState('testing');
   const [lastName, setLastName] = useState('user');
   const [phoneNumber, setPhoneNumber] = useState('1234567890');
-  const [email, setEmail] = useState('testing@mailinator.com');
+  const [email, setEmail] = useState('testing1@mailinator.com');
   const [password, setPassword] = useState('1234567890');
   const [isChecked, setIsChecked] = useState(false);
   const [deviceToken, setDeviceToken] = useState('');
@@ -60,7 +60,6 @@ export default function SignUp() {
   //   getToken();
   // }, []);
 
-
   // const getToken = async () => {
   //   const token = await messaging().getToken();
   //   setDeviceToken(token);
@@ -70,42 +69,42 @@ export default function SignUp() {
     return str.match(/[a-zA-Z]/);
   };
 
-    const registerUser = () => {
-    if (!isChecked) {
-      Toast.show(ToastError('Please agree to our Terms and Policies'));
-      return;
-    }
-    setIsPasswordValid(false);
-    if (!firstName || !lastName || !email || !phoneNumber || !password) {
-      Toast.show(ToastError('All fields are required!'));
-      return;
-    }
+  const registerUser = () => {
+    // if (!isChecked) {
+    //   Toast.show(ToastError('Please agree to our Terms and Policies'));
+    //   return;
+    // }
+    // setIsPasswordValid(false);
+    // if (!firstName || !lastName || !email || !phoneNumber || !password) {
+    //   Toast.show(ToastError('All fields are required!'));
+    //   return;
+    // }
 
-    if (password.length < 8) {
-      Toast.show(ToastError('Password should be atleast 8 characters'));
-      return;
-    }
+    // if (password.length < 8) {
+    //   Toast.show(ToastError('Password should be atleast 8 characters'));
+    //   return;
+    // }
 
-    if (!emailValidityCheck(email)) {
-      Toast.show(ToastError('Invalid email, Enter a valid email'));
-      return;
-    }
+    // if (!emailValidityCheck(email)) {
+    //   Toast.show(ToastError('Invalid email, Enter a valid email'));
+    //   return;
+    // }
 
-    if (!isPasswordAlphaNumeric(password)) {
-      return setIsPasswordValid(true);
-    }
+    // if (!isPasswordAlphaNumeric(password)) {
+    //   return setIsPasswordValid(true);
+    // }
 
-    if (phoneNumber.length < 7) {
-      return Toast.show(ToastError('Invalid phone number'));
-    }
+    // if (phoneNumber.length < 7) {
+    //   return Toast.show(ToastError('Invalid phone number'));
+    // }
 
-    if (!isTrueString(firstName)) {
-      return Toast.show(ToastError('Invalid First Name'));
-    }
-    if (!isTrueString(lastName)) {
-      return Toast.show(ToastError('Invalid Last Name'));
-    }
-
+    // if (!isTrueString(firstName)) {
+    //   return Toast.show(ToastError('Invalid First Name'));
+    // }
+    // if (!isTrueString(lastName)) {
+    //   return Toast.show(ToastError('Invalid Last Name'));
+    // }
+    // console.log('api clall');
     dispatch(
       AuthMiddleware.Register({
         email: email,
@@ -114,15 +113,14 @@ export default function SignUp() {
         lastName: lastName,
         phoneNumber: phoneNumber,
         agencyId: 1,
-        profilePicture: "",
+        profilePicture: '',
         userType: 'Buyer',
       }),
     )
       .then(data => {
-        console.warn(data)
+        console.warn(data);
         setFirstName('');
-        setLastName(''), 
-        setEmail('');
+        setLastName(''), setEmail('');
         setPassword('');
         setPhoneNumber('');
         // Toast.show(ToastSuccess('Please verify OTP sent to your email.'));

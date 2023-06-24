@@ -134,8 +134,8 @@ export default function VerifyOTP({route}) {
           <Image
             source={Images.otp}
             style={{
-              width: Metrix.HorizontalSize(300),
-              height: Metrix.VerticalSize(300),
+              width: Metrix.HorizontalSize(350),
+              height: Metrix.VerticalSize(350),
             }}
           />
 
@@ -191,7 +191,7 @@ export default function VerifyOTP({route}) {
           />
         </View>
         {/* GOBACK */}
-        <View style={{marginVertical: Metrix.VerticalSize(10)}}>
+        {/* <View style={{marginVertical: Metrix.VerticalSize(10)}}>
           <Button
             btnStyle={{
               width: '95%',
@@ -205,7 +205,7 @@ export default function VerifyOTP({route}) {
               NavigationService.goBack();
             }}
           />
-        </View>
+        </View> */}
       </ScrollView>
     </View>
   );

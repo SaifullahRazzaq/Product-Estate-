@@ -18,7 +18,6 @@ export class AuthMiddleware extends Component {
     phoneNumber,
     userType,
     agencyId,
-    profilePicture,
   }) {
     return async dispatch => {
       return new Promise(async (resolve, reject) => {
@@ -29,16 +28,13 @@ export class AuthMiddleware extends Component {
           lastName: lastName,
           phoneNumber: phoneNumber,
           userType: userType,
-          agencyId: 0,
-          profilePicture: null,
+          agencyId: agencyId,
+          // profilePicture:null
         };
         try {
           dispatch(LoaderAction.LoaderTrue());
           console.log('regitser====>', payload);
-          let response = await ApiCaller.Post(
-            'users/register',
-            JSON.stringify(payload),
-          );
+          let response = await ApiCaller.Post('users/register', payload);
           console.log('REG RES:', response);
 
           if (response.data?.statusCode == 200) {
@@ -50,11 +46,7 @@ export class AuthMiddleware extends Component {
           } else {
             dispatch(LoaderAction.LoaderFalse());
             reject(response);
-            Toast.show(
-              ToastError(
-                response.data?.message ?? `Error Code: ${response?.status}`,
-              ),
-            );
+            Toast.show(ToastError(response.data?.message));
           }
         } catch (error) {
           console.log('catch google', error);

@@ -16,6 +16,7 @@ import Facourite from './App/Favourites';
 import MyReview from './App/MyReview';
 import List from './App/List'
 import Verification from './Auth/Verification';
+import filter from './App/filter,';
 
 export {
     Login,
@@ -35,5 +36,6 @@ export {
     Notifications,
     MyReview,
     List,
-    Verification
+    Verification,
+    filter
 }

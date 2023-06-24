@@ -18,6 +18,7 @@ import {
   Facourite,
   ContactUs,
   Verification,
+  filter,
 } from './src/screen';
 import {BottomTabs, Button} from './src/components';
 import {ActivityIndicator, View} from 'react-native';
@@ -29,19 +30,13 @@ const AuthStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
-      initialRouteName="Verification">
+      initialRouteName="Login">
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Intro" component={IntroScreen} />
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
       <Stack.Screen name="Verification" component={Verification} />
-
-      {/* <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="ChangePassword" component={ChangePassword} />
-      <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
-      <Stack.Screen name="Verification" component={Verification} /> */}
-      {/* <Stack.Screen name="TermsAndConditions" component={TermsAndCondition} /> */}
     </Stack.Navigator>
   );
 };
@@ -65,6 +60,7 @@ const UserStack = props => {
       <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
       <Stack.Screen name="TermsAndConditions" component={TermsAndCondition} />
       <Stack.Screen name="Notifications" component={Notifications} />
+      
       <Stack.Screen
         name="Profile"
         component={Profile}
@@ -76,21 +72,7 @@ const UserStack = props => {
       <Stack.Screen name="Favourites" component={Facourite} />
       <Stack.Screen name="ContactUs" component={ContactUs} />
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
-
-      {/* 
-     
-      <Stack.Screen name="ExtensionRequests" component={ExtensionRequests} />
-      <Stack.Screen name="DateChangeRequests" component={DateChangeRequests} />
-      <Stack.Screen name="AddAccount" component={AddAccount} />
-      <Stack.Screen name="SavedTrailers" component={SavedTrailers} />
-      <Stack.Screen name="BookingDetail" component={BookingDetail} />
-      <Stack.Screen name="SpentAmount" component={SpentAmount} />
-      <Stack.Screen name="Library" component={Liberary} />
-      <Stack.Screen name="LibraryFaqs" component={LibraryFaqs} />
-      <Stack.Screen name="LibraryMediaDetail" component={LibraryMediaDetail} />
-      <Stack.Screen name="VideoPlayerScreen" component={VideoPlayerScreen} />
-      <Stack.Screen name="ImageView" component={ImageView} />
-      <Stack.Screen name="VerifyOTP" component={VerifyOTP} /> */}
+      <Stack.Screen name="Filter" component={filter} />
     </Stack.Navigator>
   );
 };
@@ -114,55 +96,6 @@ class AppNavigation extends React.Component {
           >
             <Stack.Screen name="AuthStack" component={AuthStack} />
             <Stack.Screen name="UserStack" component={UserStack} />
-            {/* 
-            <Stack.Screen name="BottomTabs" component={BottomTabs} />
-            <Stack.Screen name="ChangePassword" component={ChangePassword} />
-            <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
-            <Stack.Screen
-              name="TermsAndConditions"
-              component={TermsAndCondition}
-            />
-            <Stack.Screen name="ContactUs" component={ContactUs} />
-            <Stack.Screen name="TrailerDetails" component={TrailerDetails} />
-            <Stack.Screen name="Checkout" component={Checkout} />
-            <Stack.Screen name="RegisterOnRent" component={RegisterOnRent} />
-            <Stack.Screen name="VerifyOTP" component={VerifyOTP} />
-            <Stack.Screen name="ConfirmPay" component={ConfirmPay} />
-            <Stack.Screen name="ROProfile" component={ROProfile} />
-            <Stack.Screen name="Thank" component={Thank} />
-            <Stack.Screen
-              name="Profile"
-              component={Profile}
-              options={{gestureEnabled: false}}
-            />
-            <Stack.Screen
-              name="ExtensionRequests"
-              component={ExtensionRequests}
-            />
-            <Stack.Screen
-              name="DateChangeRequests"
-              component={DateChangeRequests}
-            />
-
-            <Stack.Screen name="BankAccounts" component={BankAccounts} />
-            <Stack.Screen name="AddAccount" component={AddAccount} />
-            <Stack.Screen name="SavedTrailers" component={SavedTrailers} />
-            <Stack.Screen name="BookingDetail" component={BookingDetail} />
-            <Stack.Screen name="SpentAmount" component={SpentAmount} />
-            <Stack.Screen name="Library" component={Liberary} />
-            <Stack.Screen name="MyReviews" component={MyReviews} />
-            <Stack.Screen name="LibraryFaqs" component={LibraryFaqs} />
-            <Stack.Screen
-              name="LibraryMediaDetail"
-              component={LibraryMediaDetail}
-            />
-            <Stack.Screen
-              name="VideoPlayerScreen"
-              component={VideoPlayerScreen}
-            />
-            <Stack.Screen name="ImageView" component={ImageView} />
-            <Stack.Screen name="Notifications" component={Notifications} />
-            <Stack.Screen name="Chat" component={Chat} /> */}
           </Stack.Navigator>
         </NavigationContainer>
         {loading && (

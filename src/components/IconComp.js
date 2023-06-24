@@ -10,8 +10,8 @@ const IconComp = ({ iconName, iconType, iconStyle, onPress }) => {
             width: Metrix.HorizontalSize(40),
             height: Metrix.HorizontalSize(35),
             borderRadius: 5,
-            borderWidth: 1,
-            borderColor: Colors.secondaryColor,
+            borderWidth: 0.5,
+            borderColor: Colors.darkGray,
             justifyContent: 'center',
             alignItems: 'center'
         }}>

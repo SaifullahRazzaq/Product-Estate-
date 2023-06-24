@@ -5,6 +5,7 @@ import Input from './Input'
 import Header from './Header';
 import IconComp from './IconComp';
 import CustomModal from './CustomModal';
+import ButtonTab from './ButtonTab';
 export {
   BottomTabs,
   Button,
@@ -12,5 +13,6 @@ export {
   Input,
   Header,
   IconComp,
-  CustomModal
+  CustomModal,
+  ButtonTab
 };
